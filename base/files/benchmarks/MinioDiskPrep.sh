@@ -78,11 +78,13 @@ CreateMinioLauncher() {
 	disk_1="$(ls $MNT_TOP_DIR/ | sort | head -1 | awk -F "/" '{print $NF}')"
 	#disk_1="$(echo $disk_1 sed -e "s/\(................\)\(...\)/\1{\2/")"
 	disk_n="$(ls $MNT_TOP_DIR/ | sort | tail -1 | awk -F "/" '{print $NF}')"
-	#disk_n="$(printf $disk_n | tail -c $PAD_LEN)}"
+	disk_n="$(printf $disk_n | tail -c $PAD_LEN)"
+        echo "disk_1=$disk_1"
+	echo "disk_n=$disk_n"
 	cat <<- SCRIPT >$MINIO_SERVER_SCRIPT
 		export MINIO_ACCESS_KEY=\${MINIO_ACCESS_KEY:=admin}
 		export MINIO_SECRET_KEY=\${MINIO_SECRET_KEY:=password}
-		minio server $MNT_TOP_DIR/{$disk_1...$disk_n}
+		minio server $MNT_TOP_DIR/$MNT_DIR_PREFIX{$disk_1...$disk_n}
 	SCRIPT
 	chmod a+x $MINIO_SERVER_SCRIPT
 	printf "done\n To Start MinIO server: $(realpath $MINIO_SERVER_SCRIPT)\n\n"
