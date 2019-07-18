@@ -22,15 +22,40 @@ cp_tmux_conf_lyve:
     - group: lyve
     - mode: 755
 
+force_ntpdate_install:
+  cmd.run:
+    - name: 'apt-get install ntpdate'
+    - unless:
+      - test -f /usr/sbin/ntpdate
+
+fix_ubuntu_time:
+  cmd.run:
+    - name: 'ntpdate -s time.seagate.com; apt-get update'
+    - require:
+      - force_ntpdate_install
+
 install_pkgs:
   pkg.installed:
-    - pkgs: ["vim","tmux","ntpdate"]
+    - pkgs: ["vim","tmux","ntp","ntp-doc"]
+    - require:
+      - fix_ubuntu_time
+
+cp_salt_bootstrap:
+  file.managed:
+    - name: "/root/bootstrap-salt.sh"
+    - source: "salt://files/misc/bootstrap-salt.sh"
+    - user: root
+    - group: root
+    - mode: 755
 
 boot_strap_salt:
   cmd.run:
-    - name: 'curl -L https://bootstrap.saltstack.com stable 2019.2.0 | sudo sh'
+    - name: '/root/bootstrap-salt.sh stable 2019.2.0'
     - unless:
       - test -f /etc/salt/minion
+    - require:
+      - cp_salt_bootstrap
+      - install_pkgs 
 
 set_minion_conf:
   file.managed:
@@ -39,6 +64,8 @@ set_minion_conf:
     - user: root
     - group: root
     - mode: 0600
+    - require:
+      - boot_strap_salt
 
 set_minion_pem:
   file.managed:
@@ -47,6 +74,8 @@ set_minion_pem:
     - user: root
     - group: root
     - mode: 0600
+    - require:
+      - boot_strap_salt
 
 set_minion_pub:
   file.managed:
@@ -55,6 +84,8 @@ set_minion_pub:
     - user: root
     - group: root
     - mode: 0600
+    - require:
+      - boot_strap_salt
 
 copy_benchmark_tools:
   file.recurse:
@@ -74,11 +105,17 @@ copy_minio_tools:
     - user: root
     - group: root
 
-salt-minion:
+salt-minion.service:
   service.running:
     - enable: True
     - reload: True
+    - require:
+      - set_minion_pub
+      - set_minion_pem
+      - set_minion_conf
 
 restart_salt_minion:
   cmd.run:
     - name: "systemctl restart salt-minion"
+    - require:
+      - salt-minion.service
