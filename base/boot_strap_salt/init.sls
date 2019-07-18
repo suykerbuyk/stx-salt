@@ -8,7 +8,7 @@ cp_termsize:
 
 cp_tmux_conf_root:
   file.managed:
-    - name /root/.tmux.conf
+    - name: "/root/.tmux.conf"
     - source: salt://files/misc/tmux.conf
     - user: root
     - group: root
@@ -16,8 +16,8 @@ cp_tmux_conf_root:
 
 cp_tmux_conf_lyve:
   file.managed:
-    - name /home/lyve/.tmux.conf
-    - source: salt://files/misc/tmux.conf
+    - name: "/home/lyve/.tmux.conf"
+    - source: "salt://files/misc/tmux.conf"
     - user: lyve
     - group: lyve
     - mode: 755
@@ -43,7 +43,7 @@ set_minion_conf:
 set_minion_pem:
   file.managed:
     - name: /etc/salt/pki/minion/minion.pem
-    - source: salt://files/misc/default.lyve.labs.minion.pem
+    - source: salt://files/pki/default.lyve.labs.pem
     - user: root
     - group: root
     - mode: 0600
@@ -51,7 +51,7 @@ set_minion_pem:
 set_minion_pub:
   file.managed:
     - name: /etc/salt/pki/minion/minion.pub
-    - source: salt://files/misc/default.lyve.labs.minion.pub
+    - source: salt://files/pki/default.lyve.labs.pub
     - user: root
     - group: root
     - mode: 0600
