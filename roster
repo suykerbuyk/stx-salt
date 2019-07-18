@@ -1,0 +1,32 @@
+# Sample salt-ssh config file
+#web1:
+#  host: 192.168.42.1 # The IP addr or DNS hostname
+#  user: fred         # Remote executions will be executed as user fred
+#  passwd: foobarbaz  # The password to use for login, if omitted, keys are used
+#  sudo: True         # Whether to sudo to root, not enabled by default
+#web2:
+#  host: 192.168.42.2
+
+4u100-1a:
+  host: 4u100-1a
+  user: lyve
+  passwd: clandestine
+  sudo: True
+
+4u100-1b:
+  host: 4u100-1b
+  user: lyve
+  passwd: clandestine
+  sudo: True
+
+4u100-2a:
+  host: 4u100-2a
+  user: lyve
+  passwd: clandestine
+  sudo: True
+
+4u100-2b:
+  host: 4u100-2b
+  user: lyve
+  passwd: clandestine
+  sudo: True
