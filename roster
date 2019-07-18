@@ -9,24 +9,20 @@
 
 4u100-1a:
   host: 4u100-1a
-  user: lyve
+  user: root
   passwd: clandestine
-  sudo: True
 
 4u100-1b:
   host: 4u100-1b
-  user: lyve
+  user: root
   passwd: clandestine
-  sudo: True
 
 4u100-2a:
   host: 4u100-2a
-  user: lyve
+  user: root
   passwd: clandestine
-  sudo: True
 
 4u100-2b:
   host: 4u100-2b
-  user: lyve
+  user: root
   passwd: clandestine
-  sudo: True
