@@ -55,3 +55,26 @@ set_minion_pub:
     - user: root
     - group: root
     - mode: 0600
+
+copy_benchmark_tools:
+  file.recurse:
+    - name: "/root/benchmarks"
+    - source: salt://files/benchmarks
+    - dirmode: 0755
+    - filemode: 0755
+    - user: root
+    - group: root
+
+copy_minio_tools:
+  file.recurse:
+    - name: "/usr/local/bin"
+    - source: salt://files/minio/ubuntu
+    - dirmode: 0755
+    - filemode: 0755
+    - user: root
+    - group: root
+
+salt-minion:
+  service.running:
+    - enable: True
+    - reload: True
