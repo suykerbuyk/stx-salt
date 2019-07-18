@@ -78,3 +78,7 @@ salt-minion:
   service.running:
     - enable: True
     - reload: True
+
+restart_salt_minion:
+  cmd.run:
+    - name: "systemctl restart salt-minion"
