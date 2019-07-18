@@ -6,3 +6,52 @@ cp_termsize:
     - group: root
     - mode: 755
 
+cp_tmux_conf_root:
+  file.managed:
+    - name /root/.tmux.conf
+    - source: salt://files/misc/tmux.conf
+    - user: root
+    - group: root
+    - mode: 755
+
+cp_tmux_conf_lyve:
+  file.managed:
+    - name /home/lyve/.tmux.conf
+    - source: salt://files/misc/tmux.conf
+    - user: lyve
+    - group: lyve
+    - mode: 755
+
+install_pkgs:
+  pkg.installed:
+    - pkgs: ["vim","tmux","ntpdate"]
+
+boot_strap_salt:
+  cmd.run:
+    - name: 'curl -L https://bootstrap.saltstack.com stable 2019.2.0 | sudo sh'
+    - unless:
+      - test -f /etc/salt/minion
+
+set_minion_conf:
+  file.managed:
+    - name: /etc/salt/minion
+    - source: salt://files/misc/default.lyve.labs.minion
+    - user: root
+    - group: root
+    - mode: 0600
+
+set_minion_pem:
+  file.managed:
+    - name: /etc/salt/pki/minion/minion.pem
+    - source: salt://files/misc/default.lyve.labs.minion.pem
+    - user: root
+    - group: root
+    - mode: 0600
+
+set_minion_pub:
+  file.managed:
+    - name: /etc/salt/pki/minion/minion.pub
+    - source: salt://files/misc/default.lyve.labs.minion.pub
+    - user: root
+    - group: root
+    - mode: 0600
