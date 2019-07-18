@@ -657,7 +657,7 @@ ssh_update_roster: True
 
 file_roots:
   base:
-    - /opt/stx/stx-salt
+    - /opt/stx/stx-salt/base
 
 
 # The master_roots setting configures a master-only copy of the file_roots dictionary,

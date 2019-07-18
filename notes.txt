@@ -1,0 +1,2 @@
+salt-ssh -i -c /opt/stx/stx-salt/ --key-deploy 4u100-1a state.sls
+boot_strap_salt
