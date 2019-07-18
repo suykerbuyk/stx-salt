@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
-MINIO_SERVER_SCRIPT='./LaunchMinioServer.sh'
+# Figure out where we are being run
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+MINIO_SERVER_SCRIPT="$SCRIPTPATH/LaunchMinioServer.sh"
+#
 DISK_TYPE='ST10000'
 MNT_TOP_DIR='/minio_test'
 MNT_DIR_PREFIX='disk'
@@ -76,11 +79,9 @@ MountFileSystems() {
 CreateMinioLauncher() {
 	printf "Creating minio server launch script\n"
 	disk_1="$(ls $MNT_TOP_DIR/ | sort | head -1 | awk -F "/" '{print $NF}')"
-	#disk_1="$(echo $disk_1 sed -e "s/\(................\)\(...\)/\1{\2/")"
+	disk_1="$(printf $disk_1 | tail -c $PAD_LEN)"
 	disk_n="$(ls $MNT_TOP_DIR/ | sort | tail -1 | awk -F "/" '{print $NF}')"
 	disk_n="$(printf $disk_n | tail -c $PAD_LEN)"
-        echo "disk_1=$disk_1"
-	echo "disk_n=$disk_n"
 	cat <<- SCRIPT >$MINIO_SERVER_SCRIPT
 		export MINIO_ACCESS_KEY=\${MINIO_ACCESS_KEY:=admin}
 		export MINIO_SECRET_KEY=\${MINIO_SECRET_KEY:=password}
