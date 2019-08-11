@@ -26,3 +26,8 @@
   host: 4u100-2b
   user: root
   passwd: clandestine
+# Automatically added by "root" at 2019-08-11T01:08:50.627260
+lr02u34:
+    host: lr02u34
+    user: root
+    passwd: clandestine

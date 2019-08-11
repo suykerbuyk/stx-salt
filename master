@@ -41,6 +41,7 @@ interface: 172.16.15.1
 
 # The path to the master's configuration file.
 #conf_file: /etc/salt/master
+conf_file: /opt/stx/stx-salt/master
 
 # Directory used to store public key data:
 #pki_dir: /etc/salt/pki/master
@@ -657,7 +658,7 @@ ssh_update_roster: True
 
 file_roots:
   base:
-    - /opt/stx/stx-salt/salt/base/files/
+    - /opt/stx/stx-salt/salt/base/
 
 
 # The master_roots setting configures a master-only copy of the file_roots dictionary,
