@@ -31,3 +31,7 @@ lr02u34:
     host: lr02u34
     user: root
     passwd: clandestine
+lr02u30:
+    host: lr02u30
+    user: root
+    passwd: clandestine
