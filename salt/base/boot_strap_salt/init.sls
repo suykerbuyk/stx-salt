@@ -1,3 +1,6 @@
+
+#bootstrap-salt.sh source: https://bootstrap.saltstack.com/stable/bootstrap-salt.sh
+
 cp_salt_bootstrap:
   file.managed:
     - name: "/root/bootstrap-salt.sh"
@@ -44,6 +47,7 @@ set_minion_pub:
     - require:
       - boot_strap_salt
 
+# Need to set minion_id here!
 salt-minion.service:
   service.running:
     - enable: True
