@@ -1,3 +1,13 @@
+{% set ntpdate_done_dir = salt['pillar.get']('stx:dirs:done_dir') %}
+{% set ntpdate_done_flag =  salt['pillar.get']('stx:dirs:done_dir') ~ '/ntpdate.done' %}
+
+{{ ntpdate_done_dir }}:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: true
+
 cp_termsize:
   file.managed:
     - name: /bin/termsize
@@ -21,21 +31,22 @@ cp_tmux_conf_lyve:
     - user: lyve
     - group: lyve
     - mode: 755
-
-force_ntpdate_install:
-  cmd.run:
-    - name: 'apt-get install ntpdate'
     - unless:
-      - test -f /usr/sbin/ntpdate
-
-fix_ubuntu_time:
-  cmd.run:
-    - name: 'ntpdate -s time.seagate.com'
-    - require:
-      - force_ntpdate_install
+      - test ! -d /home/lyve
 
 install_pkgs:
   pkg.installed:
-    - pkgs: ["vim","tmux","ntp","ntp-doc","ipmitool"]
+   - pkgs: {{ salt['pillar.get']('stx:pkgs:base') }}
+   - require:
+      - {{ ntpdate_done_dir }}
+
+
+fix_ubuntu_time:
+  cmd.run:
+    - name: "systemctl stop ntp; ntpdate -s time.seagate.com && date >> {{ ntpdate_done_flag }}"
     - require:
-      - fix_ubuntu_time
+      - install_pkgs
+      - {{ ntpdate_done_dir }}
+    - unless:
+      - test -f {{ ntpdate_done_flag }}
+
