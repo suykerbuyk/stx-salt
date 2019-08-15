@@ -30,6 +30,7 @@ stx:
       - ntp-doc
       - ipmitool
       - moreutils
+      - iperf
       - iperf3
       - sysstat
       - vnstat
