@@ -36,7 +36,7 @@ cp_tmux_conf_lyve:
 
 install_pkgs:
   pkg.installed:
-   - pkgs: {{ salt['pillar.get']('stx:pkgs:base') }}
+   - pkgs: {{ salt['pillar.get']('stx:pkgs:common') }}
    - require:
       - {{ ntpdate_done_dir }}
 

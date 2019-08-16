@@ -35,3 +35,8 @@ lr02u30:
     host: lr02u30
     user: root
     passwd: clandestine
+# Automatically added by "root" at 2019-08-16T13:35:55.027819
+lr01u14:
+    host: lr01u14
+    user: root
+    passwd: clandestine

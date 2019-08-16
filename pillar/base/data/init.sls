@@ -1,6 +1,8 @@
 {% set stx_root_dir='/opt/stx' %}
 
 stx:
+  - timeserver:
+    - 'time.seagate.com'
   - users:
     - lyve:
       - fullname: "Lyve Labs"
@@ -12,7 +14,7 @@ stx:
     - nginx: "{{ stx_root_dir }}/stx-nginx"
     - docker: "{{ stx_root_dir }}/stx-docker"
   - pkgs:
-    - base:
+    - common:
       {% if grains['os'] == 'Ubuntu' %}
       - vim
       - ntp-doc
