@@ -15,8 +15,10 @@ stx:
     - base:
       {% if grains['os'] == 'Ubuntu' %}
       - vim
+      - ntp-doc
       {% elif grains['os'] == 'CentOS' %}
       - vim-enhanced
+      - ntp-doc
       {% elif grains['os'] == 'SUSE' %}
       - vim
       {% elif grains['os'] == 'FreeBSD' %}
@@ -27,12 +29,17 @@ stx:
       - tmux
       - ntp
       - ntpdate
-      - ntp-doc
       - ipmitool
       - moreutils
       - iperf
       - iperf3
       - sysstat
       - vnstat
-
-
+  - minio:
+    - log_dir: '/var/log/minio_test'
+  - role:
+    - 4u100-1a: minio_server
+    - 4u100-1b: minio_server
+    - 4u100-2a: minio_server
+    - 4u100-2b: minio_server
+    - lr02u30: minio_client

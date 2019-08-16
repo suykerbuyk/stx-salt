@@ -41,7 +41,7 @@ install_pkgs:
       - {{ ntpdate_done_dir }}
 
 
-fix_ubuntu_time:
+set_time:
   cmd.run:
     - name: "systemctl stop ntp; ntpdate -s time.seagate.com && date >> {{ ntpdate_done_flag }}"
     - require:
