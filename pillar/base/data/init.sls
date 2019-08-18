@@ -1,4 +1,5 @@
 {% set stx_root_dir='/opt/stx' %}
+{% set stx_log_dir='/var/log/stx' %}
 
 stx:
   - timezone:
@@ -10,11 +11,12 @@ stx:
       - fullname: "Lyve Labs"
       - password: "clandestine"
   - dirs:
-    - done_dir: "{{ stx_root_dir }}/stx-done"
     - salt: "{{ stx_root_dir }}/stx-salt"
     - dnsmasq: "{{ stx_root_dir }}/stx-dnsmasq"
     - nginx: "{{ stx_root_dir }}/stx-nginx"
     - docker: "{{ stx_root_dir }}/stx-docker"
+    - done_dir: "{{ stx_log_dir }}/stx-done"
+    - minio_test_logs: "{{ stx_log_dir }}/minio_test_logs"
   - pkgs:
     - common:
       {% if grains['os'] == 'Ubuntu' %}
