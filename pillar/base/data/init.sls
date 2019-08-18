@@ -1,6 +1,8 @@
 {% set stx_root_dir='/opt/stx' %}
 
 stx:
+  - timezone:
+    - 'America/Denver'
   - timeserver:
     - 'time.seagate.com'
   - users:
@@ -17,9 +19,15 @@ stx:
     - common:
       {% if grains['os'] == 'Ubuntu' %}
       - vim
+      - tmux
+      - ntpdate
       - ntp-doc
+      - moreutils
+      - iperf3
       {% elif grains['os'] == 'CentOS' %}
       - vim-enhanced
+      - tmux
+      - ntpdate
       - ntp-doc
       {% elif grains['os'] == 'SUSE' %}
       - vim
@@ -28,13 +36,9 @@ stx:
       {% else %}
       - vim
       {% endif %}
-      - tmux
       - ntp
-      - ntpdate
       - ipmitool
-      - moreutils
       - iperf
-      - iperf3
       - sysstat
       - vnstat
   - minio:

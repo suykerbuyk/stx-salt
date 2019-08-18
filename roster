@@ -11,22 +11,18 @@
   host: 4u100-1a
   user: root
   passwd: clandestine
-
 4u100-1b:
   host: 4u100-1b
   user: root
   passwd: clandestine
-
 4u100-2a:
   host: 4u100-2a
   user: root
   passwd: clandestine
-
 4u100-2b:
   host: 4u100-2b
   user: root
   passwd: clandestine
-# Automatically added by "root" at 2019-08-11T01:08:50.627260
 lr02u34:
     host: lr02u34
     user: root
@@ -35,8 +31,11 @@ lr02u30:
     host: lr02u30
     user: root
     passwd: clandestine
-# Automatically added by "root" at 2019-08-16T13:35:55.027819
 lr01u14:
     host: lr01u14
+    user: root
+    passwd: clandestine
+lr01u34:
+    host: lr01u34
     user: root
     passwd: clandestine
