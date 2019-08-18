@@ -88,3 +88,9 @@ repo_add_SUSE-Module-Module-Legacy:
     - gpgautoimport: True
     - require:
       - cmd: suse_repo_purge
+
+repositories_configured:
+  grains.present:
+    - name ['stx:flag:repos_configured']
+    - value: True
+

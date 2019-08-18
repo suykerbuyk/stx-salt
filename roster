@@ -23,19 +23,31 @@
   host: 4u100-2b
   user: root
   passwd: clandestine
-lr02u34:
-    host: lr02u34
-    user: root
-    passwd: clandestine
 lr02u30:
     host: lr02u30
+    user: root
+    passwd: clandestine
+lr02u34:
+    host: lr02u34
     user: root
     passwd: clandestine
 lr01u14:
     host: lr01u14
     user: root
     passwd: clandestine
+lr01u22:
+    host: lr01u22
+    user: root
+    passwd: clandestine
+lr01u24:
+    host: lr01u24
+    user: root
+    passwd: clandestine
 lr01u34:
     host: lr01u34
+    user: root
+    passwd: clandestine
+lr01u37:
+    host: lr01u37
     user: root
     passwd: clandestine

@@ -1,12 +1,5 @@
-{% set ntpdate_done_dir = salt['pillar.get']('stx:dirs:done_dir') %}
-{% set ntpdate_done_flag =  salt['pillar.get']('stx:dirs:done_dir') ~ '/ntpdate.done' %}
-
-{{ ntpdate_done_dir }}:
-  file.directory:
-    - user: root
-    - group: root
-    - mode: 755
-    - makedirs: true
+include:
+  - minion.config.repo
 
 cp_termsize:
   file.managed:
@@ -37,16 +30,18 @@ cp_tmux_conf_lyve:
 install_pkgs:
   pkg.installed:
    - pkgs: {{ salt['pillar.get']('stx:pkgs:common') }}
-   - require:
-      - {{ ntpdate_done_dir }}
 
-
+#Needs to be refactored into a time module, respect and use pillar data!
 set_time:
   cmd.run:
-    - name: "systemctl stop ntp; ntpdate -s time.seagate.com && date >> {{ ntpdate_done_flag }}"
+    - name: "systemctl stop ntp; ntpdate -s time.seagate.com"
     - require:
       - install_pkgs
-      - {{ ntpdate_done_dir }}
-    - unless:
-      - test -f {{ ntpdate_done_flag }}
+
+set_time_done:
+  grains.present:
+    - name: ['stx:flag:configured_time']
+    - value: True
+    - require:
+      - set_time
 

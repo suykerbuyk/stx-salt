@@ -1,7 +1,7 @@
 base:
   minio_server:
     - match: nodegroup
-    - minion.config.minio_server
+    - minion.config.minio.minio_server
   minio_client:
     - match: nodegroup
-    - minion.config.minio_client
+    - minion.config.minio.minio_client

@@ -1,5 +1,5 @@
 include:
-  - minion_state_base
+  - minion.config.common
 
 copy_benchmark_tools:
   file.recurse:

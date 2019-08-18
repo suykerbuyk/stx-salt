@@ -47,6 +47,15 @@ set_minion_pub:
     - require:
       - boot_strap_salt
 
+set_minion_id:
+  cmd.run:
+    - name: 'uname -n >/etc/salt/minion_id'
+    - user: root
+    - group: root
+    - mode: 0600
+    - require:
+      - boot_strap_salt
+
 # Need to set minion_id here!
 salt-minion.service:
   service.running:
@@ -56,6 +65,7 @@ salt-minion.service:
       - set_minion_pub
       - set_minion_pem
       - set_minion_conf
+      - set_minion_id
 
 restart_salt_minion:
   cmd.run:
