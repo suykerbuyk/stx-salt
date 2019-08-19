@@ -91,6 +91,6 @@ repo_add_SUSE-Module-Module-Legacy:
 
 repositories_configured:
   grains.present:
-    - name ['stx:flag:repos_configured']
+    - name 'stx:flag:repos_configured'
     - value: True
 

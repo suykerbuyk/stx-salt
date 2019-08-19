@@ -40,7 +40,7 @@ set_time:
 
 set_time_done:
   grains.present:
-    - name: ['stx:flag:configured_time']
+    - name: 'stx:flag:configured_time'
     - value: True
     - require:
       - set_time
