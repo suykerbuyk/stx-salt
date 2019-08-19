@@ -31,3 +31,8 @@ gather_fdisk_info:
       - {{ test_log_fdisk }}
     - require:
       - test_log_dir_exists
+launch_minio_server:
+  - cmd.run:
+    - name: setsid /root/benchmarks/LaunchMinioServer.sh 2&1>{{test_log_minio}}
+    - require:
+      - gather_fdisk_info

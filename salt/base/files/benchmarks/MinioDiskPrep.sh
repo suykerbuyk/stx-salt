@@ -85,7 +85,7 @@ CreateMinioLauncher() {
 	cat <<- SCRIPT >$MINIO_SERVER_SCRIPT
 		export MINIO_ACCESS_KEY=\${MINIO_ACCESS_KEY:=admin}
 		export MINIO_SECRET_KEY=\${MINIO_SECRET_KEY:=password}
-		minio server http://minio-{1...4}:9000$MNT_TOP_DIR/$MNT_DIR_PREFIX{$disk_1...$disk_n}
+		minio server http://minio-{1...4}:9000$MNT_TOP_DIR/$MNT_DIR_PREFIX{$disk_1...$disk_n} 2>&1 >>/var/log/minio.log
 	SCRIPT
 	chmod a+x $MINIO_SERVER_SCRIPT
 	printf "done\n To Start MinIO server: $(realpath $MINIO_SERVER_SCRIPT)\n\n"
