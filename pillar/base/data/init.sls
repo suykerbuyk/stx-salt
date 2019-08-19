@@ -10,6 +10,12 @@ stx:
     - lyve:
       - fullname: "Lyve Labs"
       - password: "clandestine"
+  - keys:
+    - minio_server:
+      - access:
+        - admin
+      - secret:
+        - password
   - dirs:
     - salt: "{{ stx_root_dir }}/stx-salt"
     - dnsmasq: "{{ stx_root_dir }}/stx-dnsmasq"

@@ -1,5 +1,6 @@
 include:
   - minion.config.minio.minio_installed
+  - minion.config.minio.minio_network
 
 minio_disk_prep:
   cmd.run:
@@ -22,3 +23,4 @@ minio_disk_prep_done:
     - value: True
     - require:
       - stx_role
+      - minio_network_set
