@@ -9,7 +9,7 @@ include:
 copy_minio_tools:
   file.recurse:
     - name: "/usr/local/bin"
-    - source: salt://files/minio/ubuntu
+    - source: salt://files/minio/ubuntu/bin/
     - dir_mode: 0755
     - file_mode: 0755
     - user: root

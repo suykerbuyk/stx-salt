@@ -1,0 +1,10 @@
+# Volume to be used for MinIO server.
+MINIO_VOLUMES="http://minio-{1...4}/mnt/drive{1...48}"
+# Use if you want to run MinIO on a custom port.
+MINIO_OPTS=""
+# Access Key of the server.
+MINIO_ACCESS_KEY=admin
+# Secret key of the server.
+MINIO_SECRET_KEY=password
+# Parity
+MINIO_STORAGE_CLASS_STANDARD=EC:4

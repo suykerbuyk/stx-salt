@@ -2,7 +2,7 @@
 {% set test_log_cpu = test_log_dir ~ '/lscpu.log' %}
 {% set test_log_mem = test_log_dir ~ '/lsmem.log' %}
 {% set test_log_fdisk = test_log_dir ~ '/fdisk.log' %}
-{% set test_log_minio = test_log_dir ~ '/minio.log' %}
+{% set test_log_minio = test_log_dir ~ '/minioLaunch.log' %}
 {% set minio_access_key = salt['pillar.get']('stx:keys:minio_server:access') %}
 {% set minio_secret_key = salt['pillar.get']('stx:keys:minio_server:secret') %}
 
@@ -31,8 +31,10 @@ gather_fdisk_info:
       - {{ test_log_fdisk }}
     - require:
       - test_log_dir_exists
-launch_minio_server:
-  - cmd.run:
-    - name: setsid /root/benchmarks/LaunchMinioServer.sh 2&1>{{test_log_minio}}
-    - require:
-      - gather_fdisk_info
+minio.service:
+  service.running:
+    - enable: True
+    - reload: True
+    - watch:
+      - /etc/default/minio
+      - minio_configured
