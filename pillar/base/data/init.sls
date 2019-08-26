@@ -12,10 +12,17 @@ stx:
       - password: "clandestine"
   - keys:
     - minio_server:
-      - access:
-        - admin
-      - secret:
-        - password
+      - access: admin
+      - secret: password
+  - s3-benchmark:
+    - duration: 5
+    - obj_size: 1M
+    - threads: 1
+    - loops: 1
+    - lr02u30:
+      - target: 'http://minio-1:9000'
+    - lr02u34:
+      - target: 'http://minio-2:9000'
   - dirs:
     - salt: "{{ stx_root_dir }}/stx-salt"
     - dnsmasq: "{{ stx_root_dir }}/stx-dnsmasq"

@@ -1,6 +1,24 @@
 include:
   - minion.config.repo
 
+lyve_group:
+  group.present:
+    - name: lyve
+
+lyve_user:
+  user.present:
+   - name: lyve
+   - fullname: 'Lyve Labs'
+   - password: '$1$ztYifvdX$bxHf1lJ7r4NuFxq7g3Zcp0'
+   - groups:
+     - lyve
+   - optional_groups:
+     - wheel
+     - sudo
+   - createhome: True
+   - require:
+     - lyve_group
+
 cp_termsize:
   file.managed:
     - name: /bin/termsize
@@ -24,8 +42,8 @@ cp_tmux_conf_lyve:
     - user: lyve
     - group: lyve
     - mode: 755
-    - unless:
-      - test ! -d /home/lyve
+    - require:
+      - lyve_user
 
 install_pkgs:
   pkg.installed:

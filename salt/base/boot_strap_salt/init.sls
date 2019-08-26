@@ -56,7 +56,6 @@ set_minion_id:
     - require:
       - boot_strap_salt
 
-# Need to set minion_id here!
 salt-minion.service:
   service.running:
     - enable: True
