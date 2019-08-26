@@ -32,6 +32,7 @@ stx:
       - ntp-doc
       - moreutils
       - iperf3
+      - vnstat
       {% elif grains['os'] == 'CentOS' %}
       - vim-enhanced
       - tmux
@@ -49,7 +50,6 @@ stx:
       - ipmitool
       - iperf
       - sysstat
-      - vnstat
   - node:
     - 4u100-1a:
       - os: ubuntu-18_04
@@ -94,7 +94,7 @@ stx:
     - lr01u34:
       - os: sles-15sp1
       - role:
-        - ceph_client
+        - minio_client
     - lr01u37:
       - os: sles-15sp1
       - role:
