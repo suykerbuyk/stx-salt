@@ -27,6 +27,15 @@ cp_termsize:
     - group: root
     - mode: 755
 
+cp_zeroDisk:
+  file.managed:
+    - name: /bin/zeroDisk.sh
+    - source: salt://files/bin/zeroDisk.sh
+    - user: root
+    - group: root
+    - mode: 755
+
+
 cp_tmux_conf_root:
   file.managed:
     - name: "/root/.tmux.conf"

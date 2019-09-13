@@ -5,6 +5,5 @@
 {% set repo_suffix = grains['osfinger'] %}
 
 include:
-  #    - 'minion/config/repo/{{repo_suffix}}'
     - 'minion/config/repo/{{my_os}}'
 

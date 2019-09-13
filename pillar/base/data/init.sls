@@ -47,6 +47,7 @@ stx:
       - ntp-doc
       {% elif grains['os'] == 'SUSE' %}
       - vim
+      - iputils
       - less
       {% elif grains['os'] == 'FreeBSD' %}
       - vim
@@ -86,6 +87,10 @@ stx:
       - os: sles-15sp1
       - role:
         - ceph_osd
+    - lr01u16:
+      - os: sles-15sp1
+      - role:
+        - ceph_osd
     - lr01u22:
       - os: sles-15sp1
       - role:
@@ -101,8 +106,12 @@ stx:
     - lr01u34:
       - os: sles-15sp1
       - role:
-        - minio_client
-    - lr01u37:
+        - ceph_mon
+    - lr01u36:
       - os: sles-15sp1
       - role:
-        - ceph_client
+        - ceph_mon
+    - sadmin:
+      - os: sles-15sp1
+      - role:
+        - ceph_admin

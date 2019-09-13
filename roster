@@ -27,12 +27,28 @@ lr02u30:
     host: lr02u30
     user: root
     passwd: clandestine
+lr02u31:
+    host: lr02u31
+    user: root
+    passwd: clandestine
+lr02u32:
+    host: lr02u32
+    user: root
+    passwd: clandestine
+lr02u33:
+    host: lr02u33
+    user: root
+    passwd: clandestine
 lr02u34:
     host: lr02u34
     user: root
     passwd: clandestine
 lr01u14:
     host: lr01u14
+    user: root
+    passwd: clandestine
+lr01u16:
+    host: lr01u16
     user: root
     passwd: clandestine
 lr01u22:
@@ -43,11 +59,27 @@ lr01u24:
     host: lr01u24
     user: root
     passwd: clandestine
+lr01u30:
+    host: lr01u30
+    user: root
+    passwd: clandestine
+lr01u32:
+    host: lr01u32
+    user: root
+    passwd: clandestine
 lr01u34:
     host: lr01u34
     user: root
     passwd: clandestine
-lr01u37:
-    host: lr01u37
+lr01u36:
+    host: lr01u36
+    user: root
+    passwd: clandestine
+lr01u38:
+    host: lr01u38
+    user: root
+    passwd: clandestine
+sadmin:
+    host: sadmin
     user: root
     passwd: clandestine
