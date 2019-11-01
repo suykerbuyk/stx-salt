@@ -83,3 +83,7 @@ sadmin:
     host: sadmin
     user: root
     passwd: clandestine
+cadmin:
+    host: cadmin.lyve.colo.seagate.com
+    user: root
+    passwd: clandestine
