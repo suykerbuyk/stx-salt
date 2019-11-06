@@ -93,4 +93,13 @@ repositories_configured:
   grains.present:
     - name: 'stx:flag:repos_configured'
     - value: True
+    - require:
+      - repo_add_SLE-15-SP1-Installer
+      - repo_add_SUSE-Enterprise-Storage-6
+      - repo_add_SUSE-Product-SLES
+      - repo_add_SUSE-Module-Basesystem
+      - repo_add_SUSE-Module-Containers
+      - repo_add_SUSE-Module-Development-Tools
+      - repo_add_SUSE-Module-Server-Applications
+      - repo_add_SUSE-Module-Module-Legacy
 

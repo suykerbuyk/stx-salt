@@ -42,7 +42,6 @@ stx:
       - vnstat
       {% elif grains['os'] == 'CentOS' %}
       - vim-enhanced
-      - tmux
       - ntpdate
       - ntp-doc
       {% elif grains['os'] == 'SUSE' %}
@@ -54,6 +53,7 @@ stx:
       {% else %}
       - vim
       {% endif %}
+      - ethtool
       - ntp
       - ipmitool
       - iperf

@@ -29,8 +29,16 @@ cp_termsize:
 
 cp_zeroDisk:
   file.managed:
-    - name: /bin/zeroDisk.sh
+    - name: /usr/local/sbin/zeroDisk.sh
     - source: salt://files/bin/zeroDisk.sh
+    - user: root
+    - group: root
+    - mode: 755
+
+cp_configure.ipmi.sh:
+  file.managed:
+    - name: /usr/local/sbin/configure.ipmi.sh
+    - source: salt://files/misc/configure.ipmi.sh
     - user: root
     - group: root
     - mode: 755
@@ -53,6 +61,12 @@ cp_tmux_conf_lyve:
     - mode: 755
     - require:
       - lyve_user
+
+configure_ipmi:
+  cmd.run:
+    - name: "/usr/local/sbin/configure.ipmi.sh"
+    - require:
+      - cp_configure.ipmi.sh
 
 install_pkgs:
   pkg.installed:
