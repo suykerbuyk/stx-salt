@@ -41,4 +41,4 @@ def check_for_mellanox():
 
 
 if __name__ == "__main__":
-    print (check_for_mellanox())
+    print check_for_mellanox()
