@@ -87,3 +87,9 @@ cadmin:
     host: cadmin.lyve.colo.seagate.com
     user: root
     passwd: clandestine
+lr02sp1:
+    host: lr02sp1.lyve.colo.seagate.com
+    user: cumulus
+    passwd: CumulusLinux!
+    sudo: True
+
