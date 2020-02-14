@@ -17,6 +17,20 @@ iputils:
     - group: root
     - mode: 755
 
+/sbin/mk_lvm.sh:
+  file.managed:
+    - source: salt://files/bin/mk_lvm.sh
+    - user: root
+    - group: root
+    - mode: 755
+
+/sbin/rm_lvm.sh:
+  file.managed:
+    - source: salt://files/bin/rm_lvm.sh
+    - user: root
+    - group: root
+    - mode: 755
+
 salt-minion.service:
   service.running:
     - reload: True
